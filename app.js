@@ -163,7 +163,7 @@ app.post("/newlist",(req,res)=>{
           name:listname,
           items:defaultItems
         })
-        newlist.save();
+         newlist.save();
         
         res.redirect("/"+listname)
 
@@ -220,7 +220,7 @@ app.post("/changelist",(req,res)=>{
 })
 
 let port=process.env.PORT;
-if(port==NULL || port==""){
+if(port==null || port==""){
   port=3000;
 }
 app.listen(port, function() {

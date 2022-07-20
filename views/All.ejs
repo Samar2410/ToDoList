@@ -1,0 +1,23 @@
+<%- include("header") -%>
+
+
+<div class="box" id="heading">
+    
+    
+     
+<div class="alllists"> 
+    <h1 style="color:white">All Lists</h1>
+    <form  action="/route" method="post">
+      <!-- <div class="new">
+      <button  class="btn"  type="submit">Add new list</button>
+      </div> -->
+     
+      <button name="listname"  value="Today" type="submit" class="btn">Today</button>
+    
+      <% lists.forEach(element => {  %>
+      <button class="btn" name="listname" value="<%=element.name%>" type="submit" class="list"><%=element.name%> </button>
+   <% }); %>
+     </form>
+  </div>
+
+<%- include("footer") -%>

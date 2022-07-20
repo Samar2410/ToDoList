@@ -1,0 +1,54 @@
+<%- include("header") -%>
+  
+  <div class="box" id="heading">
+    
+    <!-- <input type="checkbox" class="checkbox"> -->
+   <div id="alllist">
+    <form action="/Alllists" method="get">
+    <button class="btn" id="all" >
+      
+     All Lists</button>
+    </form>
+</div>
+     <div class="newlist">
+      <form action="/newlist" method="post">
+        <input style="background-color:white" type="text" name="newlist" placeholder="Enter name"></input>
+        
+        <button class="new" type="submit"  name="oldlist" value="<%= listTitle %>">Submit</button>
+      </form>
+      </div>
+   
+    
+   
+     
+</div>
+
+  <div class="box">
+    <h1> <%= listTitle %> </h1>
+    <div class="deletelist">
+    <form action="/deletelist" method="post">
+    <button class="btn" type="submit" name="deletelistname" value="<%= listTitle %>" >Delete list</button>
+    </form>
+    <form action="/changelist" method="post">
+      <input type="text" name="newname"  id="" placeholder="Enter new name">
+      <button class="btn" type="submit" name="changelistname" value="<%= listTitle %>" >Edit list name</button>
+    </form>
+
+      </div>
+    <% newListItems.forEach(element => { %>
+        <form action="/delete" method="post">
+        <div class="item">
+        <input onChange="this.form.submit()" type="checkbox" name="checkbox" value="<%=element._id %>">
+        <p><%=  element.name %></p>
+      </div>
+      <input type="hidden" name="listname" value="<%=listTitle%>"></input>
+    </form>
+     <% }); %>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>
+      </form>
+  </div>
+
+<%- include("footer") -%>

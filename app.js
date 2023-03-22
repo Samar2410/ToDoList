@@ -1,8 +1,5 @@
 
-require("dotenv").config();
-const key = process.env.KEY; 
-const value = process.env.VALUE; 
-console.log(key)
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -15,7 +12,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 var arr=[]
-mongoose.connect("mongodb+srv://"+key+":"+value+"@cluster0.tadd6yi.mongodb.net/todolistDB");
+
+mongoose.connect("mongodb://localhost:27017/TODOList");
 const itemsSchema={
   name:String
 };
@@ -219,10 +217,11 @@ app.post("/changelist",(req,res)=>{
 
 })
 
-let port=process.env.PORT;
-if(port==null || port==""){
-  port=3000;
-}
+// let port=process.env.PORT;
+// if(port==null || port==""){
+//   port=3000;
+// }
+let port=3000;
 app.listen(port, function() {
   console.log("Server started on port 3000");
 });
